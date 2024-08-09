@@ -24,4 +24,12 @@ public class Librarian extends Person {
         this.id = id;
     }
 
+    // Display librarian
+    @Override
+    public String toString() {
+
+        return getFirstname() + "\t" + getLastname() + "\t;" + getId();
+
+    }
+
 }
