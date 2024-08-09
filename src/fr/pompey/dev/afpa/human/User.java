@@ -26,7 +26,6 @@ public class User extends Person {
 
     }
 
-
     /**
      * Gets email.
      *
@@ -44,7 +43,6 @@ public class User extends Person {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     /**
      * Gets registrationDate.
@@ -74,5 +72,14 @@ public class User extends Person {
         System.out.println(getFirstname() + " " + getLastname() + " has returned the book: " + bookTitle);
     }
      */
+
+
+    // Display user
+    @Override
+    public String toString() {
+
+        return getFirstname() + "\t" + getLastname() + "\t;" + getEmail() + "\t" + getRegistrationDate();
+
+    }
 }
 

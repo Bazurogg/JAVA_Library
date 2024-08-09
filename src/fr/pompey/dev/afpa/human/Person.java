@@ -8,6 +8,7 @@ import java.text.DateFormat;
 public class Person {
 
     private String firstname;
+
     private String lastname;
 
     public String getFirstname() {

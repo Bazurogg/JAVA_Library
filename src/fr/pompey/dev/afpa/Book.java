@@ -7,12 +7,12 @@ public class Book {
     private Integer nbPages;
     private boolean available;
 
-    public Book(String title, String author, Integer nbPages) {
+    public Book(String title, String author, Integer nbPages, boolean available) {
 
         this.title = title;
         this.author = author;
         this.nbPages = nbPages;
-        this.available = true;
+        this.available = available;
 
     }
 
@@ -49,6 +49,15 @@ public class Book {
     }
 
     // Methods
-    
+
+    // Display book
+    @Override
+    public String toString() {
+
+        String availability = available ? "Available" : "Not Available";
+
+        return getTitle() + "\t" + getAuthor() + "\t" + getNbPages() + "pages" + "\t" + availability;
+
+    }
 
 }
