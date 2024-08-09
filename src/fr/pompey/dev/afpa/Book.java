@@ -47,4 +47,8 @@ public class Book {
     public void setAvailable(boolean available) {
         this.available = available;
     }
+
+    // Methods
+    
+
 }
