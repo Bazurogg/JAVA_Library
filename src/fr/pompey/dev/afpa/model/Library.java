@@ -6,9 +6,9 @@ import java.util.Date;
 
 public class Library {
 
-    private ArrayList<Book> books;
-    private ArrayList<User> users;
-    private ArrayList<Loan> loans;
+    private final ArrayList<Book> books;
+    private final ArrayList<User> users;
+    private final ArrayList<Loan> loans;
 
     public Library() {
         this.books = new ArrayList<>();
