@@ -19,7 +19,8 @@ public class Main {
             System.out.println("1. Register a new user");
             System.out.println("2. Add a new book");
             System.out.println("3. List all the users");
-            System.out.println("4. Exit");
+            System.out.println("4. List all the books");
+            System.out.println("5. Exit");
             System.out.print("Please choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -39,6 +40,10 @@ public class Main {
                     break;
 
                 case 4:
+                    library.displayAllBooks();
+                    break;
+
+                case 5:
                     System.out.println("Exiting...");
                     return;
 

@@ -2,19 +2,19 @@ package fr.pompey.dev.afpa.model;
 
 public class Book {
 
-    private String title;
-    private String author;
-    private Integer nbPages;
-    private boolean available;
+private String title;
+private String author;
+private Integer nbPages;
+private boolean available;
 
-    public Book(String title, String author, Integer nbPages, boolean available) {
+public Book(String title, String author, Integer nbPages, boolean available) {
 
-        this.title = title;
-        this.author = author;
-        this.nbPages = nbPages;
-        this.available = available;
+    this.title = title;
+    this.author = author;
+    this.nbPages = nbPages;
+    this.available = available;
 
-    }
+}
 
     public String getTitle() {
         return title;

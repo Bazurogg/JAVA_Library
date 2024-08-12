@@ -71,4 +71,17 @@ public class Library {
 
     }
 
+    // Listing all books
+    public void displayAllBooks() {
+
+        System.out.println("List of all books:");
+
+        for (Book book : books) {
+
+            System.out.println(book.toString());
+
+        }
+
+    }
+
 }
