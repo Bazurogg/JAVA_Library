@@ -1,10 +1,7 @@
 // LOAN BOOK
-package fr.pompey.dev.afpa;
+package fr.pompey.dev.afpa.model;
 
 import java.util.Date;
-
-// User class is in different package, we need to import it here
-import fr.pompey.dev.afpa.human.User;
 
 public class Loan {
 

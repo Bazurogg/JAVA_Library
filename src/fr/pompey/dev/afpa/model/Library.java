@@ -1,10 +1,8 @@
-
 // LIBRARY LOAN MANAGEMENT
-package fr.pompey.dev.afpa;
+package fr.pompey.dev.afpa.model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import fr.pompey.dev.afpa.human.User;
 
 public class Library {
 
@@ -48,21 +46,15 @@ public class Library {
         }
     }
 
-    public void displayBooks() {
-        for (Book book : books) {
-            System.out.println(book.toString());
-        }
+    public ArrayList<Book> getBooks() {
+        return books;
     }
 
-    public void displayUsers() {
-        for (User user : users) {
-            System.out.println(user.toString());
-        }
+    public ArrayList<User> getUsers() {
+        return users;
     }
 
-    public void displayLoans() {
-        for (Loan loan : loans) {
-            System.out.println(loan.toString());
-        }
+    public ArrayList<Loan> getLoans() {
+        return loans;
     }
 }
