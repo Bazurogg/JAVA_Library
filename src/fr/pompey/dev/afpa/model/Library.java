@@ -57,4 +57,18 @@ public class Library {
     public ArrayList<Loan> getLoans() {
         return loans;
     }
+
+    // Listing all register users
+    public void displayAllUsers() {
+
+        System.out.println("List of all users:");
+
+        for (User user : users) {
+
+            System.out.println(user.toString());
+
+        }
+
+    }
+
 }
