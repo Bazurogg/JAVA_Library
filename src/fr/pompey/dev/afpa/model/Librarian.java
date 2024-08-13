@@ -3,16 +3,14 @@ package fr.pompey.dev.afpa.model;
 public class Librarian extends Person {
 
     private String id;
+    private boolean isConnected;
 
-    public Librarian(String firstname, String lastname, String id) {
-
+    public Librarian(String firstname, String lastname) {
         super();
-
         this.setFirstname(firstname);
-
         this.setLastname(lastname);
-
         this.id = generateId(firstname, lastname);
+        this.isConnected = true; // is connected by default
     }
 
     public String getId() {
@@ -23,6 +21,14 @@ public class Librarian extends Person {
         this.id = id;
     }
 
+    public boolean isConnected() {
+        return isConnected;
+    }
+
+    public void setConnected(boolean connected) {
+        isConnected = connected;
+    }
+
     // Generate ID
     private String generateId(String firstname, String lastname) {
         return firstname.toLowerCase() + "." + lastname.toLowerCase() + "@nancyville-library.fr";
@@ -31,7 +37,6 @@ public class Librarian extends Person {
     // Display librarian
     @Override
     public String toString() {
-        return getFirstname() + "\t" + getLastname() + "\t;" + getId();
+        return getFirstname() + "\t" + getLastname() + "[" + getId() + "]";
     }
-
 }

@@ -1,6 +1,7 @@
 package fr.pompey.dev.afpa;
 
 import fr.pompey.dev.afpa.model.Book;
+import fr.pompey.dev.afpa.model.Librarian;
 import fr.pompey.dev.afpa.model.Library;
 import fr.pompey.dev.afpa.model.User;
 
@@ -15,12 +16,17 @@ public class Main {
 
         Library library = new Library();
 
+        // init a connected librarian
+        Librarian librarian = new Librarian("Matt", "House");
+
         // call the method for the lib init
         library.initializeLibrary();
 
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+
+            System.out.println("Hello " + librarian);
             System.out.println("Welcome to the Library Management System");
             System.out.println("1. Register a new user");
             System.out.println("2. Add a new book");
@@ -130,4 +136,5 @@ public class Main {
         }
 
     }
+
 }
