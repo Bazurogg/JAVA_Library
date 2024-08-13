@@ -12,8 +12,7 @@ public class Librarian extends Person {
 
         this.setLastname(lastname);
 
-        this.id = id;
-
+        this.id = generateId(firstname, lastname);
     }
 
     public String getId() {
@@ -24,12 +23,15 @@ public class Librarian extends Person {
         this.id = id;
     }
 
+    // Generate ID
+    private String generateId(String firstname, String lastname) {
+        return firstname.toLowerCase() + "." + lastname.toLowerCase() + "@nancyville-library.fr";
+    }
+
     // Display librarian
     @Override
     public String toString() {
-
         return getFirstname() + "\t" + getLastname() + "\t;" + getId();
-
     }
 
 }
