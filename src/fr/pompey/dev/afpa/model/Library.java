@@ -55,7 +55,7 @@ public class Library {
         return users;
     }
 
-    public ArrayList<Rent> getLoans() {
+    public ArrayList<Rent> getRents() {
         return rents;
     }
 

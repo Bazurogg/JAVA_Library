@@ -37,6 +37,8 @@ public class Librarian extends Person {
     // Display librarian
     @Override
     public String toString() {
+
         return getFirstname() + " " + getLastname() + "[" + getId() + "]";
+
     }
 }

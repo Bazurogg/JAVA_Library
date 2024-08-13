@@ -1,20 +1,22 @@
 package fr.pompey.dev.afpa;
 
-import fr.pompey.dev.afpa.model.Book;
+import fr.pompey.dev.afpa.controller.LibController;
 import fr.pompey.dev.afpa.model.Librarian;
 import fr.pompey.dev.afpa.model.Library;
-import fr.pompey.dev.afpa.model.User;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+
 public class Main {
 
     public static void main(String[] args) {
 
         Library library = new Library();
+        LibController libController = new LibController(library);
 
         // init a connected librarian
         Librarian librarian = new Librarian("Matt", "House");
@@ -42,15 +44,15 @@ public class Main {
             switch (choice) {
 
                 case 1:
-                    registerNewUser(library, scanner);
+                    registerNewUser(libController, scanner);
                     break;
 
                 case 2:
-                    addNewBook(library, scanner);
+                    addNewBook(libController, scanner);
                     break;
 
                 case 3:
-
+                    makeNewRent(libController, scanner);
                     break;
 
                 case 4:
@@ -81,7 +83,7 @@ public class Main {
     // main method system
 
     // add new user
-    private static void registerNewUser(Library library, Scanner scanner) {
+    private static void registerNewUser(LibController libController, Scanner scanner) {
 
         System.out.print("Enter first name: ");
         String firstname = scanner.nextLine();
@@ -92,16 +94,14 @@ public class Main {
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
 
-        User newUser = new User(firstname, lastname, email);
-        library.addUser(newUser);
+        libController.addUser(firstname, lastname, email);
 
-        System.out.println("User registered successfully:");
-        System.out.println(newUser.toString());
+        System.out.println("User registered successfully.");
 
     }
 
     // add new book
-    private static void addNewBook(Library library, Scanner scanner) {
+    private static void addNewBook(LibController libController, Scanner scanner) {
 
         System.out.print("Enter title: ");
         String title = scanner.nextLine();
@@ -116,34 +116,20 @@ public class Main {
         String availability = scanner.nextLine();
         boolean available = availability.equalsIgnoreCase("yes");
 
-        Book newBook = new Book(title, author, nbPages, available);
-        library.addBook(newBook);
+        libController.addBook(title, author, nbPages, available);
 
-        System.out.println("Book registered successfully:");
-        System.out.println(newBook.toString());
+        System.out.println("Book registered successfully.");
 
-    };
+    }
 
-    private static void makeNewRent(Library library, Scanner scanner) {
+    private static void makeNewRent(LibController libController, Scanner scanner) {
         System.out.print("Enter user email: ");
         String email = scanner.nextLine();
-        User user = library.findUserByEmail(email);
-
-        if (user == null) {
-            System.out.println("User not found.");
-            return;
-        }
 
         System.out.print("Enter book title: ");
         String title = scanner.nextLine();
-        Book book = library.findBookByTitle(title);
 
-        if (book == null) {
-            System.out.println("Book not found.");
-            return;
-        }
-
-        library.borrowBook(book, user);
+        libController.borrowBook(title, email);
     }
 
     private static Date parseDate(String dateStr) {
