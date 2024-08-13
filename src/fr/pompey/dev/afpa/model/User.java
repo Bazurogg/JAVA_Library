@@ -73,13 +73,13 @@ public class User extends Person {
     }
      */
 
-
     // Display user
     @Override
     public String toString() {
 
-        return getFirstname() + "\t" + getLastname() + "\t;" + getEmail() + "\t" + getRegistrationDate();
+        return getFirstname() + " " + getLastname() + " - " + getEmail() + " -- " + getRegistrationDate();
 
     }
+
 }
 
