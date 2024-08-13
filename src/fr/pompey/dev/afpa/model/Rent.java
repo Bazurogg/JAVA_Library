@@ -3,14 +3,14 @@ package fr.pompey.dev.afpa.model;
 
 import java.util.Date;
 
-public class Loan {
+public class Rent {
 
     private Book book;
     private User user;
     private Date loanDate;
     private Date returnDate;
 
-    public Loan(Book book, User user, Date loanDate) {
+    public Rent(Book book, User user, Date loanDate) {
         this.book = book;
         this.user = user;
         this.loanDate = loanDate;

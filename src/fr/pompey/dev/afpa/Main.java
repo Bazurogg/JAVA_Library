@@ -30,10 +30,10 @@ public class Main {
             System.out.println("Welcome to the Library Management System");
             System.out.println("1. Register a new user");
             System.out.println("2. Add a new book");
-            System.out.println("3. Create a new loan");
+            System.out.println("3. Make a new rent");
             System.out.println("4. List all the users");
             System.out.println("5. List all the books");
-            System.out.println("6. List all the loans");
+            System.out.println("6. List all the books rent");
             System.out.println("7. Exit");
             System.out.print("Please choose an option: ");
             int choice = scanner.nextInt();
@@ -123,6 +123,28 @@ public class Main {
         System.out.println(newBook.toString());
 
     };
+
+    private static void makeNewRent(Library library, Scanner scanner) {
+        System.out.print("Enter user email: ");
+        String email = scanner.nextLine();
+        User user = library.findUserByEmail(email);
+
+        if (user == null) {
+            System.out.println("User not found.");
+            return;
+        }
+
+        System.out.print("Enter book title: ");
+        String title = scanner.nextLine();
+        Book book = library.findBookByTitle(title);
+
+        if (book == null) {
+            System.out.println("Book not found.");
+            return;
+        }
+
+        library.borrowBook(book, user);
+    }
 
     private static Date parseDate(String dateStr) {
 

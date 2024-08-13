@@ -9,12 +9,12 @@ public class Library {
 
     private final ArrayList<Book> books;
     private final ArrayList<User> users;
-    private final ArrayList<Loan> loans;
+    private final ArrayList<Rent> rents;
 
     public Library() {
         this.books = new ArrayList<>();
         this.users = new ArrayList<>();
-        this.loans = new ArrayList<>();
+        this.rents = new ArrayList<>();
     }
 
     public void addBook(Book book) {
@@ -28,8 +28,8 @@ public class Library {
     public void borrowBook(Book book, User user) {
         if (book.isAvailable()) {
             book.setAvailable(false);
-            Loan loan = new Loan(book, user, new Date());
-            loans.add(loan);
+            Rent rent = new Rent(book, user, new Date());
+            rents.add(rent);
             System.out.println(user.getFirstname() + " " + user.getLastname() + " has borrowed the book: " + book.getTitle());
         } else {
             System.out.println("The book " + book.getTitle() + " is not available.");
@@ -37,9 +37,9 @@ public class Library {
     }
 
     public void returnBook(Book book, User user) {
-        for (Loan loan : loans) {
-            if (loan.getBook().equals(book) && loan.getUser().equals(user) && loan.getReturnDate() == null) {
-                loan.setReturnDate(new Date());
+        for (Rent rent : rents) {
+            if (rent.getBook().equals(book) && rent.getUser().equals(user) && rent.getReturnDate() == null) {
+                rent.setReturnDate(new Date());
                 book.setAvailable(true);
                 System.out.println(user.getFirstname() + " " + user.getLastname() + " has returned the book: " + book.getTitle());
                 break;
@@ -55,8 +55,8 @@ public class Library {
         return users;
     }
 
-    public ArrayList<Loan> getLoans() {
-        return loans;
+    public ArrayList<Rent> getLoans() {
+        return rents;
     }
 
     // Listing all register users
@@ -89,6 +89,26 @@ public class Library {
 
         }
 
+    }
+
+    // search user by email
+    public User findUserByEmail(String email) {
+        for (User user : users) {
+            if (user.getEmail().equalsIgnoreCase(email)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    // search book by title
+    public Book findBookByTitle(String title) {
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
+                return book;
+            }
+        }
+        return null;
     }
 
     // Library Init

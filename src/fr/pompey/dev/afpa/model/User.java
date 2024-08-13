@@ -62,16 +62,7 @@ public class User extends Person {
         this.registrationDate = registrationDate;
     }
 
-/*
-    // Méthodes spécifiques à User
-    public void borrowBook(String bookTitle) {
-        System.out.println(getFirstname() + " " + getLastname() + " has borrowed the book: " + bookTitle);
-    }
 
-    public void returnBook(String bookTitle) {
-        System.out.println(getFirstname() + " " + getLastname() + " has returned the book: " + bookTitle);
-    }
-     */
 
     // Display user
     @Override
