@@ -25,25 +25,20 @@ public class Library {
         users.add(user);
     }
 
-    public void borrowBook(Book book, User user) {
-        if (book.isAvailable()) {
-            book.setAvailable(false);
-            Rent rent = new Rent(book, user, new Date());
-            rents.add(rent);
-            System.out.println(user.getFirstname() + " " + user.getLastname() + " has borrowed the book: " + book.getTitle());
-        } else {
-            System.out.println("The book " + book.getTitle() + " is not available.");
-        }
+    public void addRent(Rent rent) {
+        rents.add(rent);
     }
 
-    public void returnBook(Book book, User user) {
-        for (Rent rent : rents) {
-            if (rent.getBook().equals(book) && rent.getUser().equals(user) && rent.getReturnDate() == null) {
-                rent.setReturnDate(new Date());
-                book.setAvailable(true);
-                System.out.println(user.getFirstname() + " " + user.getLastname() + " has returned the book: " + book.getTitle());
-                break;
-            }
+
+
+    public void borrowBook(Book book, User user, Date returnDate) {
+        if (book.isAvailable()) {
+            book.setAvailable(false);
+            Rent rent = new Rent(book, user, new Date(), returnDate);
+            rents.add(rent);
+            System.out.println(user.getFirstname() + " " + user.getLastname() + " has borrowed the book: " + book.getTitle() + " and must return it by: " + returnDate);
+        } else {
+            System.out.println("The book " + book.getTitle() + " is not available.");
         }
     }
 

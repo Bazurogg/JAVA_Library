@@ -129,7 +129,11 @@ public class Main {
         System.out.print("Enter book title: ");
         String title = scanner.nextLine();
 
-        libController.borrowBook(title, email);
+        System.out.print("Enter return date (dd/MM/yyyy): ");
+        String returnDateStr = scanner.nextLine();
+        Date returnDate = parseDate(returnDateStr);
+
+        libController.borrowBook(title, email, returnDate);
     }
 
     private static Date parseDate(String dateStr) {

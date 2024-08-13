@@ -4,57 +4,26 @@ package fr.pompey.dev.afpa.model;
 import java.util.Date;
 
 public class Rent {
-
     private Book book;
     private User user;
-    private Date loanDate;
+    private Date borrowDate;
     private Date returnDate;
 
-    public Rent(Book book, User user, Date loanDate) {
+    public Rent(Book book, User user, Date borrowDate, Date returnDate) {
         this.book = book;
         this.user = user;
-        this.loanDate = loanDate;
-        this.returnDate = null; // Initialement, la date de retour est nulle
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Date getLoanDate() {
-        return loanDate;
-    }
-
-    public void setLoanDate(Date loanDate) {
-        this.loanDate = loanDate;
-    }
-
-    public Date getReturnDate() {
-        return returnDate;
-    }
-
-    public void setReturnDate(Date returnDate) {
+        this.borrowDate = borrowDate;
         this.returnDate = returnDate;
     }
 
+    // Getters and setters
+
     @Override
     public String toString() {
-        return "Loan{" +
+        return "Rent{" +
                 "book=" + book +
                 ", user=" + user +
-                ", loanDate=" + loanDate +
+                ", borrowDate=" + borrowDate +
                 ", returnDate=" + returnDate +
                 '}';
     }

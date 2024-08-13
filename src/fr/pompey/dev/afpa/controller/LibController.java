@@ -4,6 +4,8 @@ import fr.pompey.dev.afpa.model.Book;
 import fr.pompey.dev.afpa.model.Library;
 import fr.pompey.dev.afpa.model.User;
 
+import java.util.Date;
+
 public class LibController {
 
     private final Library library;
@@ -22,41 +24,16 @@ public class LibController {
         library.addUser(user);
     }
 
-    public void borrowBook(String title, String userEmail) {
+    public void borrowBook(String title, String userEmail, Date returnDate) {
         Book book = library.findBookByTitle(title);
         User user = library.findUserByEmail(userEmail);
         if (book != null && user != null) {
-            library.borrowBook(book, user);
+            library.borrowBook(book, user, returnDate);
         } else {
             System.out.println("Book or user not found.");
         }
     }
 
-    public void returnBook(String title, String userEmail) {
-        Book book = library.findBookByTitle(title);
-        User user = library.findUserByEmail(userEmail);
-        if (book != null && user != null) {
-            library.returnBook(book, user);
-        } else {
-            System.out.println("Book or user not found.");
-        }
-    }
 
-    public Book findBookByTitle(String title) {
-        for (Book book : library.getBooks()) {
-            if (book.getTitle().equalsIgnoreCase(title)) {
-                return book;
-            }
-        }
-        return null;
-    }
 
-    public User findUserByEmail(String email) {
-        for (User user : library.getUsers()) {
-            if (user.getEmail().equalsIgnoreCase(email)) {
-                return user;
-            }
-        }
-        return null;
-    }
 }
