@@ -10,8 +10,14 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
+
         Library library = new Library();
+
+        // call the method for the lib init
+        library.initializeLibrary();
+
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -37,16 +43,23 @@ public class Main {
                     addNewBook(library, scanner);
                     break;
 
-
                 case 3:
-                    library.displayAllUsers();
+
                     break;
 
                 case 4:
-                    library.displayAllBooks();
+                    library.displayAllUsers();
                     break;
 
                 case 5:
+                    library.displayAllBooks();
+                    break;
+
+                case 6:
+
+                    break;
+
+                case 7:
                     System.out.println("Exiting...");
                     return;
 
@@ -110,6 +123,7 @@ public class Main {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             return dateFormat.parse(dateStr);
+
         } catch (ParseException e) {
             System.out.println("Invalid date format. Please use dd/MM/yyyy.");
             return null;
