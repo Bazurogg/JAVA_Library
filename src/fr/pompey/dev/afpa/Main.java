@@ -64,7 +64,7 @@ public class Main {
                     break;
 
                 case 6:
-
+                    library.displayAllRent();
                     break;
 
                 case 7:
@@ -80,7 +80,7 @@ public class Main {
 
     }
 
-    // main method system
+    // main system method system
 
     // add new user
     private static void registerNewUser(LibController libController, Scanner scanner) {

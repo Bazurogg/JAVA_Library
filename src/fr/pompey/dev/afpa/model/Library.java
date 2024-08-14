@@ -81,6 +81,19 @@ public class Library {
             System.out.println(book.toString());
             System.out.println("_________________________________________________________________________");
 
+        }
+
+    }
+
+    public void displayAllRent() {
+
+        System.out.println("List of all rents:");
+        System.out.println("_________________________________________________________________________");
+
+        for (Rent rent : rents) {
+
+            System.out.println(rent.toString());
+            System.out.println("_________________________________________________________________________");
 
         }
 
