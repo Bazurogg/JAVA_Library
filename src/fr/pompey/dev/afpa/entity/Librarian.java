@@ -1,4 +1,4 @@
-package fr.pompey.dev.afpa.model;
+package fr.pompey.dev.afpa.entity;
 
 public class Librarian extends Person {
 

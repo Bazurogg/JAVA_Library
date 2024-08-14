@@ -1,8 +1,8 @@
 package fr.pompey.dev.afpa.controller;
 
-import fr.pompey.dev.afpa.model.Book;
-import fr.pompey.dev.afpa.model.Library;
-import fr.pompey.dev.afpa.model.User;
+import fr.pompey.dev.afpa.entity.Book;
+import fr.pompey.dev.afpa.entity.Library;
+import fr.pompey.dev.afpa.entity.User;
 
 import java.util.Date;
 

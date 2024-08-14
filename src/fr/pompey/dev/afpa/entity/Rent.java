@@ -1,5 +1,5 @@
 // LOAN BOOK
-package fr.pompey.dev.afpa.model;
+package fr.pompey.dev.afpa.entity;
 
 import java.util.Date;
 

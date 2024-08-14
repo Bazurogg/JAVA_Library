@@ -1,4 +1,4 @@
-package fr.pompey.dev.afpa.model;
+package fr.pompey.dev.afpa.entity;
 
 import java.util.Date;
 
@@ -16,11 +16,11 @@ public class User extends Person {
 
         super();
 
-        this.setFirstname(firstname);
+        setFirstname(firstname);
 
-        this.setLastname(lastname);
+        setLastname(lastname);
 
-        this.email = email;
+        setEmail(email);
 
         this.registrationDate = new Date(); // We use the current day for the "registration date".
 

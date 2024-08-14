@@ -1,8 +1,8 @@
 package fr.pompey.dev.afpa;
 
 import fr.pompey.dev.afpa.controller.LibController;
-import fr.pompey.dev.afpa.model.Librarian;
-import fr.pompey.dev.afpa.model.Library;
+import fr.pompey.dev.afpa.entity.Librarian;
+import fr.pompey.dev.afpa.entity.Library;
 
 
 import java.text.ParseException;
