@@ -1,15 +1,17 @@
 // LOAN BOOK
 package fr.pompey.dev.afpa.entity;
 
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Rent {
     private Book book;
     private User user;
     private Date borrowDate;
-    private Date returnDate;
+    private LocalDate returnDate;
 
-    public Rent(Book book, User user, Date borrowDate, Date returnDate) {
+    public Rent(Book book, User user, Date borrowDate, LocalDate returnDate) {
         this.book = book;
         this.user = user;
         this.borrowDate = borrowDate;
@@ -20,12 +22,13 @@ public class Rent {
 
     @Override
     public String toString() {
-        return "Rent{" +
-                "book=" + book +
-                ", user=" + user +
-                ", borrowDate=" + borrowDate +
-                ", returnDate=" + returnDate +
-                '}';
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedReturnDate = returnDate.format(formatter);
+        return book.getTitle() +
+                "\n" + user.getFirstname() + " " + user.getLastname() + " " + user.getEmail() +
+                "\n" + borrowDate +
+                "\n" + formattedReturnDate;
     }
+
 }
 

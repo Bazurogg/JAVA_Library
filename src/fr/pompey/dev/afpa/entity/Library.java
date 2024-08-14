@@ -1,8 +1,10 @@
 // LIBRARY LOAN MANAGEMENT
 package fr.pompey.dev.afpa.entity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Library {
@@ -31,14 +33,26 @@ public class Library {
 
 
 
-    public void borrowBook(Book book, User user, Date returnDate) {
+    public void borrowBook(Book book, User user, LocalDate returnDate) {
+
         if (book.isAvailable()) {
+
             book.setAvailable(false);
+
             Rent rent = new Rent(book, user, new Date(), returnDate);
+
             rents.add(rent);
-            System.out.println(user.getFirstname() + " " + user.getLastname() + " has borrowed the book: " + book.getTitle() + " and must return it by: " + returnDate);
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            String formattedReturnDate = returnDate.format(formatter);
+
+            System.out.println(user.getFirstname() + " " + user.getLastname() + " has borrowed the book: " + book.getTitle() + " and must return it by: " + formattedReturnDate);
+
         } else {
+
             System.out.println("The book " + book.getTitle() + " is not available.");
+
         }
     }
 

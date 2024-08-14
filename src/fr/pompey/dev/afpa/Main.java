@@ -7,8 +7,10 @@ import fr.pompey.dev.afpa.entity.Library;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
+import java.time.LocalDate;
 
 
 public class Main {
@@ -130,8 +132,11 @@ public class Main {
         String title = scanner.nextLine();
 
         System.out.print("Enter return date (dd/MM/yyyy): ");
+
         String returnDateStr = scanner.nextLine();
-        Date returnDate = parseDate(returnDateStr);
+
+        LocalDate returnDate = LocalDate.parse(returnDateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
 
         libController.borrowBook(title, email, returnDate);
     }

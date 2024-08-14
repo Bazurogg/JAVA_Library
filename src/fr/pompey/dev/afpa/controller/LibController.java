@@ -4,7 +4,7 @@ import fr.pompey.dev.afpa.entity.Book;
 import fr.pompey.dev.afpa.entity.Library;
 import fr.pompey.dev.afpa.entity.User;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class LibController {
 
@@ -24,7 +24,7 @@ public class LibController {
         library.addUser(user);
     }
 
-    public void borrowBook(String title, String userEmail, Date returnDate) {
+    public void borrowBook(String title, String userEmail, LocalDate returnDate) {
         Book book = library.findBookByTitle(title);
         User user = library.findUserByEmail(userEmail);
         if (book != null && user != null) {
