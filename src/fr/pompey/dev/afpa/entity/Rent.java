@@ -25,7 +25,7 @@ public class Rent {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String formattedReturnDate = returnDate.format(formatter);
         return book.getTitle() +
-                "\n" + user.getFirstname() + " " + user.getLastname() + " " + user.getEmail() +
+                "\n" + user.getFirstname() + " " + user.getLastname() + " " + "[" + user.getEmail() + "]" +
                 "\n" + borrowDate +
                 "\n" + formattedReturnDate;
     }

@@ -3,6 +3,7 @@ package fr.pompey.dev.afpa;
 import fr.pompey.dev.afpa.controller.LibController;
 import fr.pompey.dev.afpa.entity.Librarian;
 import fr.pompey.dev.afpa.entity.Library;
+import fr.pompey.dev.afpa.entity.User;
 
 
 import java.text.ParseException;
@@ -11,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 
 public class Main {
@@ -87,6 +89,7 @@ public class Main {
     // add new user
     private static void registerNewUser(LibController libController, Scanner scanner) {
 
+
         System.out.print("Enter first name: ");
         String firstname = scanner.nextLine();
 
@@ -99,6 +102,11 @@ public class Main {
         libController.addUser(firstname, lastname, email);
 
         System.out.println("User registered successfully.");
+
+        JOptionPane.showMessageDialog(null, "User registered successfully:\nName: " + newUser.getFirstname() + "\nLastname: " + newUser.getLastname(), "User Registered", JOptionPane.INFORMATION_MESSAGE);
+
+
+
 
     }
 
