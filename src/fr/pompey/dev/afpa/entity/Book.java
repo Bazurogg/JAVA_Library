@@ -56,7 +56,7 @@ public Book(String title, String author, Integer nbPages, boolean available) {
 
         String availability = available ? "Available" : "Not Available";
 
-        return getTitle() + "\t" + getAuthor() + "\t" + getNbPages() + " pages" + "\t" + availability;
+        return getTitle() + " | " + getAuthor() + " | " + getNbPages() + " pages" + " | \u001B[32m" + availability + "\u001B[0m";
 
     }
 

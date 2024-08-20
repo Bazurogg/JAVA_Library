@@ -150,7 +150,7 @@ public class Main {
     }
 
 
-    // Exception sur le format de date à l'input
+    // Exception sur le format de date à l'input.
     private static Date parseDate(String dateStr) {
 
         try {
