@@ -132,6 +132,7 @@ public class Main {
     }
 
     private static void makeNewRent(LibController libController, Scanner scanner) {
+
         System.out.print("Enter user email: ");
         String email = scanner.nextLine();
 
@@ -148,6 +149,8 @@ public class Main {
         libController.borrowBook(title, email, returnDate);
     }
 
+
+    // Exception sur le format de date à l'input
     private static Date parseDate(String dateStr) {
 
         try {
