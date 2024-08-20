@@ -89,7 +89,6 @@ public class Main {
     // add new user
     private static void registerNewUser(LibController libController, Scanner scanner) {
 
-
         System.out.print("Enter first name: ");
         String firstname = scanner.nextLine();
 
@@ -99,14 +98,14 @@ public class Main {
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
 
+        User newUser = new User(firstname, lastname, email);
+
         libController.addUser(firstname, lastname, email);
 
         System.out.println("User registered successfully.");
 
-        JOptionPane.showMessageDialog(null, "User registered successfully:\nName: " + newUser.getFirstname() + "\nLastname: " + newUser.getLastname(), "User Registered", JOptionPane.INFORMATION_MESSAGE);
-
-
-
+        JOptionPane.showMessageDialog(null, "User registered successfully: " + "\n" + newUser.getEmail() , "User " +
+                "Registered ", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
@@ -152,12 +151,15 @@ public class Main {
     private static Date parseDate(String dateStr) {
 
         try {
+
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             return dateFormat.parse(dateStr);
 
         } catch (ParseException e) {
+
             System.out.println("Invalid date format. Please use dd/MM/yyyy.");
             return null;
+
         }
 
     }
