@@ -4,7 +4,7 @@ import fr.pompey.dev.afpa.controller.LibController;
 import fr.pompey.dev.afpa.entity.Librarian;
 import fr.pompey.dev.afpa.entity.Library;
 import fr.pompey.dev.afpa.entity.User;
-
+import fr.pompey.dev.afpa.vue.swing.Menu;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,7 +13,6 @@ import java.util.Date;
 import java.util.Scanner;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
-
 
 public class Main {
 
@@ -29,6 +28,9 @@ public class Main {
         library.initializeLibrary();
 
         Scanner scanner = new Scanner(System.in);
+
+        Menu menu = new Menu();
+        menu.setVisible(true);
 
         while (true) {
 
