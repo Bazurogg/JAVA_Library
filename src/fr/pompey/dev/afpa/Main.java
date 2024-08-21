@@ -29,7 +29,8 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        Menu menu = new Menu();
+        Menu menu = new Menu(librarian);
+
         menu.setVisible(true);
 
         while (true) {

@@ -1,15 +1,17 @@
 package fr.pompey.dev.afpa.vue.swing;
 
+import fr.pompey.dev.afpa.entity.Librarian;
+
 import javax.swing.*;
 
 public class Menu extends JFrame {
     private JPanel Home;
     private JButton newUserButton;
-    private JTextArea hiWelcomeToTheTextArea;
+    private JTextArea welcomeTextArea;
 
 
     // config manuel du menu via les param Swing
-    public Menu() {
+    public Menu(Librarian librarian) {
         // Set the content pane of the frame to the Home panel
         setContentPane(Home);
 
@@ -19,11 +21,21 @@ public class Menu extends JFrame {
         // Set the size of the frame
         setSize(800, 600);
 
-        // Set the default close operation of the frame
+        // the app turn off when the user close the window
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        hiWelcomeToTheTextArea.setBackground(getBackground());
+        // Settings for the TextArea of the home menu
+        // Create a welcome message with the librarian's name
+        String welcomeMessage = "Welcome to the Library Management System!\n\n" +
+                "Hello, " + librarian.getFirstname() + " " + librarian.getLastname() + "!\n" +
+                "Welcome to our library management system. Here you can manage books, users, and loans.";
+
+        // set background color
+        welcomeTextArea.setBackground(getBackground());
+
+        // set own text
+        welcomeTextArea.setText(welcomeMessage);
     }
 
 }
