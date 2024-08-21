@@ -37,16 +37,17 @@ public class Main {
             System.out.println("Hello " + librarian);
             System.out.println("Welcome to the Library Management System");
             System.out.println("1. Register a new user");
-            System.out.println("2. Add a new book");
+            System.out.println("2. Add a new manga");
             System.out.println("3. Make a new rent");
             System.out.println("4. List all the users");
-            System.out.println("5. List all the books");
-            System.out.println("6. List all the books rent");
+            System.out.println("5. List all the mangas");
+            System.out.println("6. List all the mangas rent");
             System.out.println("7. Exit");
             System.out.print("Please choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
+            // switch case menu console
             switch (choice) {
 
                 case 1:

@@ -5,7 +5,10 @@ import javax.swing.*;
 public class Menu extends JFrame {
     private JPanel Home;
     private JButton newUserButton;
+    private JTextArea hiWelcomeToTheTextArea;
 
+
+    // config manuel du menu via les param Swing
     public Menu() {
         // Set the content pane of the frame to the Home panel
         setContentPane(Home);
@@ -18,6 +21,9 @@ public class Menu extends JFrame {
 
         // Set the default close operation of the frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        hiWelcomeToTheTextArea.setBackground(getBackground());
     }
 
 }

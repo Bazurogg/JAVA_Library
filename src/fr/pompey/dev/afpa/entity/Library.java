@@ -161,28 +161,28 @@ public class Library {
         addUser(new User("Tina", "Rodriguez", "tina.rodriguez@example.com"));
         addUser(new User("Ursula", "Wilson", "ursula.wilson@example.com"));
 
-        // books list preset
-        addBook(new Book("1984", "George Orwell", 328, true));
-        addBook(new Book("To Kill a Mockingbird", "Harper Lee", 281, true));
-        addBook(new Book("1984", "George Orwell", 328, true));
-        addBook(new Book("The Great Gatsby", "F. Scott Fitzgerald", 180, true));
-        addBook(new Book("Pride and Prejudice", "Jane Austen", 279, true));
-        addBook(new Book("The Catcher in the Rye", "J.D. Salinger", 214, true));
-        addBook(new Book("Moby-Dick", "Herman Melville", 378, true));
-        addBook(new Book("War and Peace", "Leo Tolstoy", 1225, true));
-        addBook(new Book("The Odyssey", "Homer", 374, true));
-        addBook(new Book("The Hobbit", "J.R.R. Tolkien", 310, true));
-        addBook(new Book("The Lord of the Rings", "J.R.R. Tolkien", 1178, true));
-        addBook(new Book("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 320, true));
-        addBook(new Book("The Da Vinci Code", "Dan Brown", 454, true));
-        addBook(new Book("The Alchemist", "Paulo Coelho", 208, true));
-        addBook(new Book("The Shining", "Stephen King", 447, true));
-        addBook(new Book("The Hunger Games", "Suzanne Collins", 374, true));
-        addBook(new Book("The Road", "Cormac McCarthy", 287, true));
-        addBook(new Book("The Fault in Our Stars", "John Green", 313, true));
-        addBook(new Book("The Girl with the Dragon Tattoo", "Stieg Larsson", 454, true));
-        addBook(new Book("The Help", "Kathryn Stockett", 352, true));
-        addBook(new Book("The Road to Wigan Pier", "George Orwell", 176, true));
+
+        // Manga list preset
+        addBook(new Book("One Piece", "Eiichiro Oda", 86, true));
+        addBook(new Book("Naruto", "Masashi Kishimoto", 72, true));
+        addBook(new Book("Dragon Ball", "Akira Toriyama", 519, true));
+        addBook(new Book("Attack on Titan", "Hajime Isayama", 28, true));
+        addBook(new Book("Death Note", "Tsugumi Ohba", 12, true));
+        addBook(new Book("My Hero Academia", "Kohei Horikoshi", 25, true));
+        addBook(new Book("Demon Slayer", "Koyoharu Gotouge", 19, true));
+        addBook(new Book("Jujutsu Kaisen", "Gege Akutami", 18, true));
+        addBook(new Book("Chainsaw Man", "Tatsuki Fujimoto", 12, true));
+        addBook(new Book("Vinland Saga", "Makoto Yukimura", 22, true));
+        addBook(new Book("Berserk", "Kentaro Miura", 34, true));
+        addBook(new Book("Fullmetal Alchemist", "Hiromu Arakawa", 27, true));
+        addBook(new Book("Hunter x Hunter", "Yoshihiro Togashi", 37, true));
+        addBook(new Book("Black Clover", "Yuki Tabata", 25, true));
+        addBook(new Book("The Promised Neverland", "Kaiu Shirai", 24, true));
+        addBook(new Book("Tokyo Ghoul", "Sui Ishida", 14, true));
+        addBook(new Book("Spy x Family", "Tatsuya Endo", 18, true));
+        addBook(new Book("Kimetsu no Yaiba", "Koyoharu Gotouge", 19, true));
+        addBook(new Book("The Seven Deadly Sins", "Nakaba Suzuki", 17, true));
+        addBook(new Book("The God of High School", "Yon Jong-ik", 16, true));
     }
 
 }
