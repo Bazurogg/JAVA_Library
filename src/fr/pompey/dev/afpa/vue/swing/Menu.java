@@ -45,8 +45,8 @@
 
 
 
-//
-//// MENU AVEC IMAGE
+
+// MENU AVEC IMAGE
 //
 //package fr.pompey.dev.afpa.vue.swing;
 //
