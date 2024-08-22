@@ -1,123 +1,127 @@
-//package fr.pompey.dev.afpa.vue.swing;
-//
-//import fr.pompey.dev.afpa.entity.Librarian;
-//
-//import javax.swing.*;
-//
-//
-//public class Menu extends JFrame {
-//    private JPanel Home;
-//    private JButton newUserButton;
-//    private JTextArea welcomeTextArea;
-//
-//
-//    // config manuel du menu via les param Swing
-//    public Menu(Librarian librarian) {
-//
-//        // Set the content pane of the frame to the Home panel
-//        setContentPane(Home);
-//
-//        // Set the title of the frame
-//        setTitle("Library Management System");
-//
-//        // Set the size of the frame
-//        setSize(800, 640);
-//
-//        // the app turn off when the user close the window
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//
-//        // Settings for the TextArea of the home menu
-//        // Create a welcome message with the librarian's name
-//        String welcomeMessage = "Welcome to the Library Management System!\n\n" +
-//                "Hello, " + librarian.getFirstname() + " " + librarian.getLastname() + "!\n" +
-//                "Here you can manage books, users, and book's rent.";
-//
-//        // set background color
-//        welcomeTextArea.setOpaque(false);
-//
-//        // set own text
-//        welcomeTextArea.setText(welcomeMessage);
-//
-//    }
-//
-//}
-
-
-
-
-
-// MENU AVEC IMAGE
 //
 //package fr.pompey.dev.afpa.vue.swing;
 //
+//import fr.pompey.dev.afpa.entity.Book;
 //import fr.pompey.dev.afpa.entity.Librarian;
+//import fr.pompey.dev.afpa.entity.Library;
+//import fr.pompey.dev.afpa.tablemodel.TableModel;
 //
 //import javax.swing.*;
 //import java.awt.*;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
+//import java.util.List;
 //
 //public class Menu extends JFrame {
-//    private JPanel Home;
+//    private JPanel Home;  // Le panneau principal généré par l'IDE
 //    private JButton newUserButton;
+//    private JButton mangasListButton;
 //    private JTextArea welcomeTextArea;
 //
+//
 //    public Menu(Librarian librarian) {
+//
+//        // Définir les paramètres de base de la fenêtre
+//        setTitle("Library Management System");
+//        setSize(800, 640);
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//        // Créer un JLayeredPane pour superposer les composants
+//        JLayeredPane layeredPane = new JLayeredPane();
+//        layeredPane.setPreferredSize(new Dimension(800, 640));
+//
 //        // Créer un JLabel pour l'image de fond
 //        JLabel backgroundLabel = new JLabel(new ImageIcon("C:\\Users\\Fabulous\\Pictures\\affichemanga01.jpg"));
+//        backgroundLabel.setBounds(0, 0, 800, 640);  // Définir la position et la taille du JLabel
 //
-//        // Configurer le panneau Home avec un layout approprié
-//        Home.setLayout(new BorderLayout());
+//        // Ajouter le JLabel à la couche inférieure du JLayeredPane
+//        layeredPane.add(backgroundLabel, Integer.valueOf(0));
 //
-//        // Ajouter le JLabel au panneau Home
-//        Home.add(backgroundLabel);
-//        backgroundLabel.setLayout(new GridBagLayout()); // Utiliser un layout pour gérer les composants par-dessus
+//        // Configurer le panneau Home avec une taille et position adéquate
+//        Home.setBounds(0, 0, 800, 640);
+//        Home.setOpaque(false);  // Rendre le panneau transparent pour voir l'image de fond
 //
-//        // Créer un panneau pour contenir les autres composants (texte et boutons)
-//        JPanel contentPanel = new JPanel();
-//        contentPanel.setOpaque(false); // Rendre le panneau transparent
-//        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+//        // Configurer le layout du panneau Home
+//        Home.setLayout(new FlowLayout());  // Exemple d'un layout simple
 //
-//        // Ajouter le texte de bienvenue
+//
+//        // Ajouter le panneau Home à la couche supérieure du JLayeredPane
+//        layeredPane.add(Home, Integer.valueOf(1));
+//
+//        // Définir le panneau de contenu de la fenêtre sur le JLayeredPane
+//        setContentPane(layeredPane);
+//
+//        // Configurer le message de bienvenue
 //        String welcomeMessage = "Welcome to the Library Management System!\n\n" +
 //                "Hello, " + librarian.getFirstname() + " " + librarian.getLastname() + "!\n" +
 //                "Here you can manage books, users, and book's rent.";
 //        welcomeTextArea.setText(welcomeMessage);
-//        welcomeTextArea.setOpaque(false); // Rendre le texte transparent
+//        welcomeTextArea.setOpaque(false); // Rendre le texte transparent pour voir l'image en arrière-plan
 //
-//        // Ajouter les composants au contentPanel
-//        contentPanel.add(welcomeTextArea);
-//        contentPanel.add(newUserButton);
+//        // Ajouter une action au bouton pour afficher la liste des livres
+//        mangasListButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                showBookList();
+//            }
 //
-//        // Ajouter le contentPanel au backgroundLabel
-//        backgroundLabel.add(contentPanel, new GridBagConstraints());
+//            private void showBookList() {
+//                // Obtenir l'instance de la bibliothèque
+//                Library library = new Library();
 //
-//        // Définir le panneau principal de la fenêtre
-//        setContentPane(Home);
+//                // Initialiser la bibliothèque (ajouter des livres et des utilisateurs)
+//                library.initializeLibrary();
 //
-//        // Configuration de la fenêtre
-//        setTitle("Library Management System");
-//        setSize(800, 640);
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//                // Obtenir la liste de livres de la bibliothèque
+//                List<Book> books = library.getBooks();
+//
+//                // Créer le modèle de la table en passant la liste de livres au constructeur
+//                TableModel model = new TableModel(books);
+//
+//                // Créer le tableau en utilisant le modèle
+//                JTable table = new JTable(model);
+//
+//                // Placer la table dans un JScrollPane pour permettre le défilement
+//                JScrollPane scrollPane = new JScrollPane(table);
+//
+//                // Créer une nouvelle fenêtre pour afficher la table
+//                JFrame tableFrame = new JFrame("List of Books");
+//                tableFrame.setSize(600, 400);
+//                tableFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//                tableFrame.add(scrollPane, BorderLayout.CENTER);
+//                tableFrame.setVisible(true);
+//            }
+//        });
+//
+//        // Rendre la fenêtre visible
 //        setVisible(true);
 //    }
 //}
 
 
-
-
-
 package fr.pompey.dev.afpa.vue.swing;
 
+import fr.pompey.dev.afpa.entity.Book;
 import fr.pompey.dev.afpa.entity.Librarian;
+import fr.pompey.dev.afpa.entity.Library;
+import fr.pompey.dev.afpa.tablemodel.TableModel;
+
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 public class Menu extends JFrame {
+
     private JPanel Home;  // Le panneau principal généré par l'IDE
     private JButton newUserButton;
+    private JButton mangasListButton;
     private JTextArea welcomeTextArea;
 
     public Menu(Librarian librarian) {
+
         // Définir les paramètres de base de la fenêtre
         setTitle("Library Management System");
         setSize(800, 640);
@@ -151,8 +155,47 @@ public class Menu extends JFrame {
         welcomeTextArea.setText(welcomeMessage);
         welcomeTextArea.setOpaque(false); // Rendre le texte transparent pour voir l'image en arrière-plan
 
-        // Rendre la fenêtre visible
-        setVisible(true);
+        // Ajout d'une action au bouton pour afficher la liste des livres
+        mangasListButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showBookList();
+            }
+
+            private void showBookList() {
+                // Obtenir l'instance de la bibliothèque
+                Library library = new Library();
+
+                // Initialiser la bibliothèque (ajouter des livres et des utilisateurs)
+                library.initializeLibrary();
+
+                // Obtenir la liste de livres de la bibliothèque
+                List<Book> books = library.getBooks();
+
+                // Créer le modèle de la table en passant la liste de livres au constructeur
+                TableModel model = new TableModel(books);
+
+                // Créer le tableau en utilisant le modèle
+                JTable table = new JTable(model);
+
+                // Placer la table dans un JScrollPane pour permettre le défilement
+                JScrollPane scrollPane = new JScrollPane(table);
+
+                // Créer une nouvelle fenêtre pour afficher la table
+                JFrame tableFrame = new JFrame("List of Books");
+                tableFrame.setSize(600, 400);
+                tableFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                tableFrame.add(scrollPane, BorderLayout.CENTER);
+                tableFrame.setVisible(true);
+
+            }
+
+        });
+
     }
+
 }
+
+
+
 

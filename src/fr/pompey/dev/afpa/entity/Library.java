@@ -133,6 +133,8 @@ public class Library {
         return null;
     }
 
+
+
     // Library Init
 
     public void initializeLibrary() {
@@ -163,7 +165,7 @@ public class Library {
 
 
         // Manga list preset
-        addBook(new Book("One Piece", "Eiichiro Oda", 86, true));
+        addBook(new Book("One Piece", "Eiichiro Oda", 86, false));
         addBook(new Book("Naruto", "Masashi Kishimoto", 72, true));
         addBook(new Book("Dragon Ball", "Akira Toriyama", 519, true));
         addBook(new Book("Attack on Titan", "Hajime Isayama", 28, true));
