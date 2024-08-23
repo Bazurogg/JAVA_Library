@@ -104,7 +104,9 @@ package fr.pompey.dev.afpa.vue.swing;
 import fr.pompey.dev.afpa.entity.Book;
 import fr.pompey.dev.afpa.entity.Librarian;
 import fr.pompey.dev.afpa.entity.Library;
+import fr.pompey.dev.afpa.entity.User;
 import fr.pompey.dev.afpa.tablemodel.TableModel;
+import fr.pompey.dev.afpa.tablemodel.UserTableModel;
 
 
 import javax.swing.*;
@@ -119,6 +121,7 @@ public class Menu extends JFrame {
     private JButton newUserButton;
     private JButton mangasListButton;
     private JTextArea welcomeTextArea;
+    private JButton usersListButtton;
 
     public Menu(Librarian librarian) {
 
@@ -183,6 +186,43 @@ public class Menu extends JFrame {
 
                 // Créer une nouvelle fenêtre pour afficher la table
                 JFrame tableFrame = new JFrame("List of Books");
+                tableFrame.setSize(600, 400);
+                tableFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                tableFrame.add(scrollPane, BorderLayout.CENTER);
+                tableFrame.setVisible(true);
+
+            }
+
+        });
+
+        // Ajout d'une action au bouton pour afficher la liste des livres
+        usersListButtton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showUserList();
+            }
+
+            private void showUserList() {
+                // Obtenir l'instance de la bibliothèque
+                Library library = new Library();
+
+                // Initialiser la bibliothèque (ajouter des livres et des utilisateurs)
+                library.initializeLibrary();
+
+                // Obtenir la liste de livres de la bibliothèque
+                List<User> users = library.getUsers();
+
+                // Créer le modèle de la table en passant la liste de livres au constructeur
+                UserTableModel model = new UserTableModel(users);
+
+                // Créer le tableau en utilisant le modèle
+                JTable table = new JTable(model);
+
+                // Placer la table dans un JScrollPane pour permettre le défilement
+                JScrollPane scrollPane = new JScrollPane(table);
+
+                // Créer une nouvelle fenêtre pour afficher la table
+                JFrame tableFrame = new JFrame("List of registered User");
                 tableFrame.setSize(600, 400);
                 tableFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 tableFrame.add(scrollPane, BorderLayout.CENTER);

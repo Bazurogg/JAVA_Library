@@ -11,19 +11,44 @@ public class UserTableModel extends AbstractTableModel {
 
     private List<User> users;
 
+    public UserTableModel(List<User> users) {
+        this.users = users;
+    }
+
     @Override
     public int getRowCount() {
-        return 0;
+        return users.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 0;
+        return columnNames.length;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return null;
+        User user = users.get(rowIndex);
+        switch (columnIndex) {
+            case 0:
+                return user.getFirstname();
+            case 1:
+                return user.getLastname();
+            case 2:
+                return user.getEmail();
+            case 3:
+                return user.getRegistrationDate();
+            default:
+                return null;
+
+        }
+
     }
+
+    @Override
+    public String getColumnName(int column) {
+        return columnNames[column];
+    }
+
+
 
 }
