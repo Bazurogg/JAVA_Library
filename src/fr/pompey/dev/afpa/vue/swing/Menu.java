@@ -121,7 +121,7 @@ public class Menu extends JFrame {
     private JButton newUserButton;
     private JButton mangasListButton;
     private JTextArea welcomeTextArea;
-    private JButton usersListButtton;
+    private JButton usersListButton;
 
     public Menu(Librarian librarian) {
 
@@ -196,7 +196,7 @@ public class Menu extends JFrame {
         });
 
         // Ajout d'une action au bouton pour afficher la liste des livres
-        usersListButtton.addActionListener(new ActionListener() {
+        usersListButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 showUserList();

@@ -59,7 +59,7 @@
           <text value="New Rent"/>
         </properties>
       </component>
-      <component id="6a9e4" class="javax.swing.JButton" binding="usersListButtton">
+      <component id="6a9e4" class="javax.swing.JButton" binding="usersListButton">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="3" height="-1"/>
