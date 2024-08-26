@@ -232,6 +232,28 @@ public class Menu extends JFrame {
 
         });
 
+        // Ajout d'une action au bouton pour afficher la fenêtre d'ajout d'utilisateur
+        newUserButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showAddUserWindow();
+            }
+
+            private void showAddUserWindow() {
+                // Créer une nouvelle instance de la fenêtre d'ajout d'utilisateur
+                AddUser addUserFrame = new AddUser();
+
+                // Définir la taille de la fenêtre
+                addUserFrame.setSize(400, 300);
+
+                // Définir l'opération de fermeture par défaut de la fenêtre
+                addUserFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+                // Rendre la fenêtre visible
+                addUserFrame.setVisible(true);
+            }
+        });
+
     }
 
 }
