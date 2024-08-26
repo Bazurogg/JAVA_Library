@@ -15,8 +15,8 @@ public class AddUser extends JFrame {
         // Set the title of the window
         setTitle("Add New User");
 
-        // Set the size of the window
-        setSize(400, 300);
+//        // Set the size of the window
+//        setSize(400, 300);
 
         // Set the default close operation
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

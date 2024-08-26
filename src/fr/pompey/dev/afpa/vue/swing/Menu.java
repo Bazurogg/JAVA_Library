@@ -244,7 +244,7 @@ public class Menu extends JFrame {
                 AddUser addUserFrame = new AddUser();
 
                 // Définir la taille de la fenêtre
-                addUserFrame.setSize(400, 300);
+                addUserFrame.setSize(550, 350);
 
                 // Définir l'opération de fermeture par défaut de la fenêtre
                 addUserFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
