@@ -20,15 +20,21 @@ public class Library {
     }
 
     public void addBook(Book book) {
+
         books.add(book);
+
     }
 
     public void addUser(User user) {
+
         users.add(user);
+
     }
 
     public void addRent(Rent rent) {
+
         rents.add(rent);
+
     }
 
 

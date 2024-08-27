@@ -13,15 +13,19 @@ public class LibController {
         this.library = library;
     }
 
+
+    // add book method
     public void addBook(String title, String author, Integer nbPages, boolean available) {
         Book book = new Book(title, author, nbPages, available);
         library.addBook(book);
     }
 
+    // add user method
     public void addUser(String firstname, String lastname, String email) {
         User user = new User(firstname, lastname, email);
         library.addUser(user);
     }
+
 
     public void borrowBook(String title, String userEmail, LocalDate returnDate) {
 

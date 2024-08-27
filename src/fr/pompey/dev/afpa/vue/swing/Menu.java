@@ -21,6 +21,7 @@ public class Menu extends JFrame {
     private JButton mangasListButton;
     private JTextArea welcomeTextArea;
     private JButton usersListButton;
+    private JButton newBookButton;
     private Library library;
 
     public Menu(Librarian librarian, Library library) {
@@ -64,15 +65,15 @@ public class Menu extends JFrame {
         mangasListButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showBookList();
+                showBookList(library);
             }
 
-            private void showBookList() {
+            private void showBookList(Library library) {
                 // Obtenir l'instance de la bibliothèque
-                Library library = new Library();
-
-                // Initialiser la bibliothèque (ajouter des livres et des utilisateurs)
-                library.initializeLibrary();
+//                Library library = new Library();
+//
+//                // Initialiser la bibliothèque (ajouter des livres et des utilisateurs)
+//                library.initializeLibrary();
 
                 // Obtenir la liste de livres de la bibliothèque
                 List<Book> books = library.getBooks();
@@ -109,7 +110,7 @@ public class Menu extends JFrame {
             }
 
             public void showUserList(Library library) {
-                // Obtenir la liste d'utilisateurs de la bibliothèque
+                // get the users list of this library
                 List<User> users = library.getUsers();
 
                 // Créer le modèle de la table en passant la liste d'utilisateurs au constructeur
@@ -133,11 +134,30 @@ public class Menu extends JFrame {
 
         // Ajout d'une action au bouton pour afficher la fenêtre d'ajout d'utilisateur
         newUserButton.addActionListener(new ActionListener() {
+
             @Override
+
             public void actionPerformed(ActionEvent e) {
-//              showAddUserWindow();
+
                 AddUser addUserFrame = new AddUser(library);
+
                 addUserFrame.setVisible(true);
+
+            }
+
+        });
+
+        // Ajout d'une action au bouton pour afficher la fenêtre d'ajout d'utilisateur
+        newBookButton.addActionListener(new ActionListener() {
+
+            @Override
+
+            public void actionPerformed(ActionEvent e) {
+
+                AddBook addBookFrame = new AddBook(library);
+
+                addBookFrame.setVisible(true);
+
             }
 
         });
