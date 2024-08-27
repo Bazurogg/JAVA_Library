@@ -1,9 +1,6 @@
 package fr.pompey.dev.afpa.vue.swing;
 
-import fr.pompey.dev.afpa.entity.Book;
-import fr.pompey.dev.afpa.entity.Librarian;
-import fr.pompey.dev.afpa.entity.Library;
-import fr.pompey.dev.afpa.entity.User;
+import fr.pompey.dev.afpa.entity.*;
 import fr.pompey.dev.afpa.tablemodel.TableModel;
 import fr.pompey.dev.afpa.tablemodel.UserTableModel;
 
@@ -22,6 +19,8 @@ public class Menu extends JFrame {
     private JTextArea welcomeTextArea;
     private JButton usersListButton;
     private JButton newBookButton;
+    private JButton rentListButton;
+    private JButton newRentButton;
     private Library library;
 
     public Menu(Librarian librarian, Library library) {
@@ -157,6 +156,23 @@ public class Menu extends JFrame {
                 AddBook addBookFrame = new AddBook(library);
 
                 addBookFrame.setVisible(true);
+
+            }
+
+        });
+
+        //
+        newRentButton.addActionListener(new ActionListener() {
+
+            @Override
+
+            public void actionPerformed(ActionEvent e) {
+
+                // Créer une nouvelle instance de la fenêtre de création de location
+                NewRent newRentFrame = new NewRent(library);
+
+                // Rendre la fenêtre visible
+                newRentFrame.setVisible(true);
 
             }
 

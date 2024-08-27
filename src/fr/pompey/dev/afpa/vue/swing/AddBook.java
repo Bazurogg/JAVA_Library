@@ -43,8 +43,11 @@ public class AddBook extends JFrame {
         addButton.addActionListener(new ActionListener() {
 
             @Override
+
             public void actionPerformed(ActionEvent e) {
+
                 addNewBook();
+
             }
 
             private void addNewBook() {
