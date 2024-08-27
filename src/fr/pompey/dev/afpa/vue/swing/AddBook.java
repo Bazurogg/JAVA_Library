@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddBook extends JFrame {
-    private final Library library;
+    private Library library;
     private JPanel AddBook;
     private JTextField titleField;
     private JTextField authorField;
