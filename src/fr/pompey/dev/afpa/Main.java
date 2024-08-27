@@ -1,18 +1,8 @@
 package fr.pompey.dev.afpa;
 
-import fr.pompey.dev.afpa.controller.LibController;
 import fr.pompey.dev.afpa.entity.Librarian;
 import fr.pompey.dev.afpa.entity.Library;
-import fr.pompey.dev.afpa.entity.User;
 import fr.pompey.dev.afpa.vue.swing.Menu;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Scanner;
-import java.time.LocalDate;
-import javax.swing.JOptionPane;
 
 public class Main {
 
@@ -29,7 +19,6 @@ public class Main {
         Menu menu = new Menu(librarian, library);
 
         menu.setVisible(true);
-
 
 
 // -------------------------------------- M E N U   C O N S O L E -------------------------------------------- //
