@@ -39,7 +39,7 @@ public class AddUser extends JFrame {
         add(panel);
 
 
-        // Ajout d'une action au bouton "Add" pour ajouter un nouvel utilisateur
+        // Add action to the button "Add"
         addButton.addActionListener(new ActionListener() {
 
             @Override
@@ -49,34 +49,39 @@ public class AddUser extends JFrame {
 
             private void addNewUser() {
 
-                // Récupérer les entrées des champs
+                // Recovering field data
                 String firstname = firstnameField.getText();
                 String lastname = lastnameField.getText();
                 String email = emailField.getText();
 
-                // Ajouter le nouvel utilisateur à la bibliothèque en utilisant la classe LibController
-                // On utilise la même instance de Library pour ajouter l'utilisateur
+                // using class LibController to add new user to the "Library"
+                // using the same instance of library
                 LibController libController = new LibController(library);
                 libController.addUser(firstname, lastname, email);
 
-                // Afficher un message de confirmation
+                // confirm alert
                 JOptionPane.showMessageDialog(null, "User added successfully!");
 
-                // Fermer la fenêtre d'ajout d'utilisateur
+                // closing the add user panel
                 dispose();
 
             }
 
         });
 
-        // Ajout d'une action au bouton "Cancel" pour fermer la fenêtre d'ajout d'utilisateur
+        // action on cancel button to close the panel
         cancelButton.addActionListener(new ActionListener() {
+
             @Override
+
             public void actionPerformed(ActionEvent e) {
+
                 dispose();
 
             }
+
         });
 
     }
+
 }

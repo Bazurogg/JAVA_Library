@@ -3,7 +3,6 @@ package fr.pompey.dev.afpa.controller;
 import fr.pompey.dev.afpa.entity.Book;
 import fr.pompey.dev.afpa.entity.Library;
 import fr.pompey.dev.afpa.entity.User;
-
 import java.time.LocalDate;
 
 public class LibController {
@@ -25,15 +24,21 @@ public class LibController {
     }
 
     public void borrowBook(String title, String userEmail, LocalDate returnDate) {
+
         Book book = library.findBookByTitle(title);
+
         User user = library.findUserByEmail(userEmail);
+
         if (book != null && user != null) {
+
             library.borrowBook(book, user, returnDate);
+
         } else {
+
             System.out.println("Book or user not found.");
+
         }
+
     }
-
-
 
 }
