@@ -122,8 +122,11 @@ public class Menu extends JFrame {
     private JButton mangasListButton;
     private JTextArea welcomeTextArea;
     private JButton usersListButton;
+    private Library library;
 
-    public Menu(Librarian librarian) {
+    public Menu(Librarian librarian, Library library) {
+
+        this.library = library;
 
         // Définir les paramètres de base de la fenêtre
         setTitle("Library Management System");
@@ -195,24 +198,22 @@ public class Menu extends JFrame {
 
         });
 
-        // Ajout d'une action au bouton pour afficher la liste des livres
+        // Ajout d'une action au bouton pour afficher la liste des utilisateurs enregistrés
         usersListButton.addActionListener(new ActionListener() {
+
             @Override
+
             public void actionPerformed(ActionEvent e) {
-                showUserList();
+
+                showUserList(library);
+
             }
 
-            private void showUserList() {
-                // Obtenir l'instance de la bibliothèque
-                Library library = new Library();
-
-                // Initialiser la bibliothèque (ajouter des livres et des utilisateurs)
-                library.initializeLibrary();
-
-                // Obtenir la liste de livres de la bibliothèque
+            public void showUserList(Library library) {
+                // Obtenir la liste d'utilisateurs de la bibliothèque
                 List<User> users = library.getUsers();
 
-                // Créer le modèle de la table en passant la liste de livres au constructeur
+                // Créer le modèle de la table en passant la liste d'utilisateurs au constructeur
                 UserTableModel model = new UserTableModel(users);
 
                 // Créer le tableau en utilisant le modèle
@@ -221,37 +222,66 @@ public class Menu extends JFrame {
                 // Placer la table dans un JScrollPane pour permettre le défilement
                 JScrollPane scrollPane = new JScrollPane(table);
 
-                // Créer une nouvelle fenêtre pour afficher la table
-                JFrame tableFrame = new JFrame("List of registered User");
-                tableFrame.setSize(600, 400);
-                tableFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                tableFrame.add(scrollPane, BorderLayout.CENTER);
-                tableFrame.setVisible(true);
-
+                // Création d'une nouvelle fenêtre pour afficher la table
+                JFrame userListFrame = new JFrame("List of Users");
+                userListFrame.setSize(600, 400);
+                userListFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                userListFrame.add(scrollPane, BorderLayout.CENTER);
+                userListFrame.setVisible(true);
             }
 
         });
+
+
+
+
+
+//        // Ajout d'une action au bouton pour afficher la liste des utilisateurs enregistrés
+//        usersListButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//
+//            }
+//
+////            private void showUserList() {
+////                // Obtenir l'instance de la bibliothèque
+////                Library library = new Library();
+////
+////                // Initialiser la bibliothèque (ajouter des livres et des utilisateurs)
+////                library.initializeLibrary();
+////
+////                // Obtenir la liste de livres de la bibliothèque
+////                List<User> users = library.getUsers();
+////
+////                // Créer le modèle de la table en passant la liste de livres au constructeur
+////                UserTableModel model = new UserTableModel(users);
+////
+////                // Créer le tableau en utilisant le modèle
+////                JTable table = new JTable(model);
+////
+////                // Placer la table dans un JScrollPane pour permettre le défilement
+////                JScrollPane scrollPane = new JScrollPane(table);
+////
+////                // Créer une nouvelle fenêtre pour afficher la table
+////                JFrame tableFrame = new JFrame("List of registered User");
+////                tableFrame.setSize(600, 400);
+////                tableFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+////                tableFrame.add(scrollPane, BorderLayout.CENTER);
+////                tableFrame.setVisible(true);
+////
+////            }
+//
+//        });
 
         // Ajout d'une action au bouton pour afficher la fenêtre d'ajout d'utilisateur
         newUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showAddUserWindow();
-            }
-
-            private void showAddUserWindow() {
-                // Créer une nouvelle instance de la fenêtre d'ajout d'utilisateur
-                AddUser addUserFrame = new AddUser();
-
-                // Définir la taille de la fenêtre
-                addUserFrame.setSize(550, 350);
-
-                // Définir l'opération de fermeture par défaut de la fenêtre
-                addUserFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-                // Rendre la fenêtre visible
+//              showAddUserWindow();
+                AddUser addUserFrame = new AddUser(library);
                 addUserFrame.setVisible(true);
             }
+
         });
 
     }
