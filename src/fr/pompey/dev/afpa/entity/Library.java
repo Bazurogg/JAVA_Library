@@ -2,6 +2,7 @@
 package fr.pompey.dev.afpa.entity;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 import java.time.format.DateTimeFormatter;
@@ -39,26 +40,17 @@ public class Library {
 
 
 
-    public void borrowBook(Book book, User user, LocalDate returnDate) {
-
+    public void addRent(Book book, User user, Date rentDate, LocalDate returnDate) {
         if (book.isAvailable()) {
-
             book.setAvailable(false);
-
-            Rent rent = new Rent(book, user, new Date(), returnDate);
-
+            Rent rent = new Rent(book, user, rentDate, returnDate); // Utilisation de `LocalDate`
             rents.add(rent);
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
             String formattedReturnDate = returnDate.format(formatter);
-
             System.out.println(user.getFirstname() + " " + user.getLastname() + " has borrowed the book: " + book.getTitle() + " and must return it by: " + formattedReturnDate);
-
         } else {
-
             System.out.println("The book " + book.getTitle() + " is not available.");
-
         }
     }
 
@@ -107,6 +99,7 @@ public class Library {
 
     }
 
+    // Listing all rents
     public void displayAllRent() {
 
         System.out.println("List of all rents:");

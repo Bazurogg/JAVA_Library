@@ -2,8 +2,10 @@ package fr.pompey.dev.afpa.controller;
 
 import fr.pompey.dev.afpa.entity.Book;
 import fr.pompey.dev.afpa.entity.Library;
+import fr.pompey.dev.afpa.entity.Rent;
 import fr.pompey.dev.afpa.entity.User;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class LibController {
 
@@ -27,22 +29,15 @@ public class LibController {
     }
 
 
-    public void borrowBook(String title, String userEmail, LocalDate returnDate) {
+    public void addRent(Book book, User user, Date rentDate, LocalDate returnDate) {
+        // Créez une nouvelle instance de Rent
+        Rent rent = new Rent(book, user, rentDate, returnDate);
 
-        Book book = library.findBookByTitle(title);
+        // Ajoutez l'emprunt à la bibliothèque
+        library.addRent(rent);
 
-        User user = library.findUserByEmail(userEmail);
-
-        if (book != null && user != null) {
-
-            library.borrowBook(book, user, returnDate);
-
-        } else {
-
-            System.out.println("Book or user not found.");
-
-        }
-
+        // Marquez le livre comme indisponible
+        book.setAvailable(false);
     }
 
 }

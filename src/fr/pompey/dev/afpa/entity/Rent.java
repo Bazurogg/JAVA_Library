@@ -8,8 +8,8 @@ import java.util.Date;
 public class Rent {
     public Book book;
     public User user;
-    private Date rentDate;
-    private LocalDate returnDate;
+    private final Date rentDate;
+    private final LocalDate returnDate;
 
     public Rent(Book book, User user, Date rentDate, LocalDate returnDate) {
         this.book = book;

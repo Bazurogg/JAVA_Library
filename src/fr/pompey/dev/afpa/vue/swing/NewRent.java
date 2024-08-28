@@ -2,11 +2,13 @@ package fr.pompey.dev.afpa.vue.swing;
 
 import fr.pompey.dev.afpa.entity.Book;
 import fr.pompey.dev.afpa.entity.Library;
+import fr.pompey.dev.afpa.entity.Rent;
 import fr.pompey.dev.afpa.entity.User;
-
+import fr.pompey.dev.afpa.controller.LibController;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -68,9 +70,39 @@ public class NewRent extends JFrame {
         returnDateSpinner.setValue(new Date()); // Set to today's date by default
 
         // Ajouter l'action du bouton "Rent"
-        rentButton.addActionListener(new MyActionListener());
+        rentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                performRent();
+            }
 
+            private void performRent() {
 
+                Book selectedBook = (Book) bookComboBox.getSelectedItem();
+                User selectedUser = (User) userComboBox.getSelectedItem();
+                Date returnDate = (Date) returnDateSpinner.getValue();
+
+                // Vérifier que le livre et l'utilisateur sont sélectionnés
+                if (selectedBook != null && selectedUser != null) {
+                    // Convertir Date en LocalDate
+                    LocalDate localReturnDate = returnDate.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+
+                    // Utiliser le contrôleur pour ajouter un nouvel emprunt
+                    LibController libController = new LibController(library);
+                    libController.addRent(selectedBook, selectedUser, new Date(), localReturnDate);
+
+                    // Confirmer l'emprunt
+                    JOptionPane.showMessageDialog(null,
+                            "Book '" + selectedBook.getTitle() + "' rented by " + selectedUser.getFirstname() + " " + selectedUser.getLastname() + " with return date: " + localReturnDate);
+
+                    // Fermer la fenêtre après l'ajout
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please select both a book and a user.");
+                }
+            }
+
+        });
 
         // action on cancel button to close the panel
         cancelButton.addActionListener(new ActionListener() {
@@ -89,33 +121,27 @@ public class NewRent extends JFrame {
 
     }
 
-    private void performRent(Book book, User user, Date returnDate) {
-        // Logique pour la location du livre ici
-        // Par exemple: marquer le livre comme loué, associer le livre à l'utilisateur, etc.
-
-        JOptionPane.showMessageDialog(this,
-                "Book '" + book.getTitle() + "' rented by " + user.getFirstname() + " " + user.getLastname() + " with return date: " + returnDate);
-    }
 
 
-    private class MyActionListener implements ActionListener {
 
-        @Override
-
-        public void actionPerformed(ActionEvent e) {
-            Book selectedBook = (Book) bookComboBox.getSelectedItem();
-            User selectedUser = (User) userComboBox.getSelectedItem();
-            Date returnDate = (Date) returnDateSpinner.getValue();
-
-            // Logique pour effectuer la location ici (ex: update database, etc.)
-            if (selectedBook != null && selectedUser != null) {
-                performRent(selectedBook, selectedUser, returnDate);
-            } else {
-                JOptionPane.showMessageDialog(null, "Please select both a book and a user.");
-            }
-
-        }
-
-    }
+//    private class MyActionListener implements ActionListener {
+//
+//        @Override
+//
+//        public void actionPerformed(ActionEvent e) {
+//            Book selectedBook = (Book) bookComboBox.getSelectedItem();
+//            User selectedUser = (User) userComboBox.getSelectedItem();
+//            Date returnDate = (Date) returnDateSpinner.getValue();
+//
+//            // Logique pour effectuer la location ici (ex: update database, etc.)
+//            if (selectedBook != null && selectedUser != null) {
+//                Rent(selectedBook, selectedUser, returnDate);
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Please select both a book and a user.");
+//            }
+//
+//        }
+//
+//    }
 
 }
