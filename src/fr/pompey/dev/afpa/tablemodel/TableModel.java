@@ -30,9 +30,13 @@ public class TableModel extends AbstractTableModel {
     }
 
     @Override
+
     public Object getValueAt(int rowIndex, int columnIndex) {
+
         Book book = books.get(rowIndex);
+
         switch (columnIndex) {
+
             case 0:
                 return book.getTitle();
             case 1:
@@ -41,12 +45,16 @@ public class TableModel extends AbstractTableModel {
                 return book.isAvailable() ? "Oui" : "Non";
             default:
                 return null;
+
         }
     }
 
     @Override
+
     public String getColumnName(int column) {
+
         return columnNames[column];
+
     }
 
 }

@@ -74,6 +74,8 @@ public class Library {
         return rents;
     }
 
+
+
     // Listing all register users
     public void displayAllUsers() {
 

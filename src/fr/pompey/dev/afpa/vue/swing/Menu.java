@@ -1,6 +1,7 @@
 package fr.pompey.dev.afpa.vue.swing;
 
 import fr.pompey.dev.afpa.entity.*;
+import fr.pompey.dev.afpa.tablemodel.RentTableModel;
 import fr.pompey.dev.afpa.tablemodel.TableModel;
 import fr.pompey.dev.afpa.tablemodel.UserTableModel;
 
@@ -59,6 +60,8 @@ public class Menu extends JFrame {
                 "Here you can manage books, users, and book's rent.";
         welcomeTextArea.setText(welcomeMessage);
         welcomeTextArea.setOpaque(false); // Rendre le texte transparent pour voir l'image en arrière-plan
+
+
 
         // Ajout d'une action au bouton pour afficher la liste des livres
         mangasListButton.addActionListener(new ActionListener() {
@@ -130,6 +133,45 @@ public class Menu extends JFrame {
             }
 
         });
+
+        // Affichage de la liste des emprunts
+        rentListButton.addActionListener(new ActionListener() {
+
+            @Override
+
+            public void actionPerformed(ActionEvent e) {
+
+                showRentList(library);
+
+            }
+
+            public void showRentList(Library library) {
+                // get the users list of this library
+                List<Rent> rents = library.getRents();
+
+                // Créer le modèle de la table en passant la liste d'utilisateurs au constructeur
+                RentTableModel model = new RentTableModel(rents);
+
+                // Créer le tableau en utilisant le modèle
+                JTable table = new JTable(model);
+
+                // Placer la table dans un JScrollPane pour permettre le défilement
+                JScrollPane scrollPane = new JScrollPane(table);
+
+                // Création d'une nouvelle fenêtre pour afficher la table
+                JFrame userListFrame = new JFrame("Rents");
+                userListFrame.setSize(600, 400);
+                userListFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                userListFrame.add(scrollPane, BorderLayout.CENTER);
+                userListFrame.setVisible(true);
+            }
+
+        });
+
+
+
+
+
 
         // Ajout d'une action au bouton pour afficher la fenêtre d'ajout d'utilisateur
         newUserButton.addActionListener(new ActionListener() {
