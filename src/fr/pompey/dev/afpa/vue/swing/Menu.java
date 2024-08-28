@@ -63,7 +63,7 @@ public class Menu extends JFrame {
 
 
 
-        // Ajout d'une action au bouton pour afficher la liste des livres
+        // Books list
         mangasListButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -100,7 +100,7 @@ public class Menu extends JFrame {
 
         });
 
-        // Ajout d'une action au bouton pour afficher la liste des utilisateurs enregistrés
+        // Registered users list
         usersListButton.addActionListener(new ActionListener() {
 
             @Override
@@ -134,7 +134,7 @@ public class Menu extends JFrame {
 
         });
 
-        // Affichage de la liste des emprunts
+        // Rents List
         rentListButton.addActionListener(new ActionListener() {
 
             @Override
@@ -169,11 +169,7 @@ public class Menu extends JFrame {
         });
 
 
-
-
-
-
-        // Ajout d'une action au bouton pour afficher la fenêtre d'ajout d'utilisateur
+        // New user panel
         newUserButton.addActionListener(new ActionListener() {
 
             @Override
@@ -188,7 +184,7 @@ public class Menu extends JFrame {
 
         });
 
-        // Ajout d'une action au bouton pour afficher la fenêtre d'ajout d'utilisateur
+        // New book panel
         newBookButton.addActionListener(new ActionListener() {
 
             @Override
@@ -203,7 +199,7 @@ public class Menu extends JFrame {
 
         });
 
-        //
+        // Rent book panel
         newRentButton.addActionListener(new ActionListener() {
 
             @Override

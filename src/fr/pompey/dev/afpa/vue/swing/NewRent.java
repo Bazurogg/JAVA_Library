@@ -7,6 +7,8 @@ import fr.pompey.dev.afpa.entity.User;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class NewRent extends JFrame {
@@ -16,6 +18,7 @@ public class NewRent extends JFrame {
     private JButton cancelButton;
     private JPanel newRent;
     private final Library library;
+    private JSpinner returnDateSpinner;
 
     public NewRent(Library library) {
 
@@ -56,19 +59,18 @@ public class NewRent extends JFrame {
             userComboBox.addItem(user);
         }
 
-//        // Configurer le layout
-//        newRent = new JPanel(new GridLayout(3, 2));
-//        newRent.add(new JLabel("Select Book:"));
-//        newRent.add(bookComboBox);
-//        newRent.add(new JLabel("Select User:"));
-//        newRent.add(userComboBox);
-//        newRent.add(rentButton);
-//        newRent.add(cancelButton);
-
-
+        // Configure the return date spinner
+        SpinnerDateModel dateModel = new SpinnerDateModel();
+        dateModel.setCalendarField(Calendar.DAY_OF_MONTH);
+        returnDateSpinner.setModel(dateModel);
+        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(returnDateSpinner, "dd/MM/yyyy");
+        returnDateSpinner.setEditor(dateEditor);
+        returnDateSpinner.setValue(new Date()); // Set to today's date by default
 
         // Ajouter l'action du bouton "Rent"
         rentButton.addActionListener(new MyActionListener());
+
+
 
         // action on cancel button to close the panel
         cancelButton.addActionListener(new ActionListener() {
@@ -83,13 +85,16 @@ public class NewRent extends JFrame {
 
         });
 
+        setVisible(true);
+
     }
 
-    private void performRent(Book book, User user) {
+    private void performRent(Book book, User user, Date returnDate) {
         // Logique pour la location du livre ici
         // Par exemple: marquer le livre comme loué, associer le livre à l'utilisateur, etc.
 
-        JOptionPane.showMessageDialog(this, "Book '" + book.getTitle() + "' rented by " + user.getFirstname() + " " + user.getLastname());
+        JOptionPane.showMessageDialog(this,
+                "Book '" + book.getTitle() + "' rented by " + user.getFirstname() + " " + user.getLastname() + " with return date: " + returnDate);
     }
 
 
@@ -100,10 +105,11 @@ public class NewRent extends JFrame {
         public void actionPerformed(ActionEvent e) {
             Book selectedBook = (Book) bookComboBox.getSelectedItem();
             User selectedUser = (User) userComboBox.getSelectedItem();
+            Date returnDate = (Date) returnDateSpinner.getValue();
 
             // Logique pour effectuer la location ici (ex: update database, etc.)
             if (selectedBook != null && selectedUser != null) {
-                performRent(selectedBook, selectedUser);
+                performRent(selectedBook, selectedUser, returnDate);
             } else {
                 JOptionPane.showMessageDialog(null, "Please select both a book and a user.");
             }
@@ -111,4 +117,5 @@ public class NewRent extends JFrame {
         }
 
     }
+
 }
