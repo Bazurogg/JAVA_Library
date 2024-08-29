@@ -10,7 +10,7 @@ public class Main {
 
         Library library = new Library();
 
-        // init a connected librarian
+        // init and simulated a connected librarian
         Librarian librarian = new Librarian("Matt", "House");
 
         // call the method for the lib init

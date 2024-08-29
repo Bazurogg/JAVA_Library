@@ -22,6 +22,8 @@ public class Menu extends JFrame {
     private JButton newBookButton;
     private JButton rentListButton;
     private JButton newRentButton;
+    private JButton returnBookButton;
+    private JButton exitButton;
     private Library library;
 
     public Menu(Librarian librarian, Library library) {
@@ -211,6 +213,39 @@ public class Menu extends JFrame {
 
                 // Rendre la fenêtre visible
                 newRentFrame.setVisible(true);
+
+            }
+
+        });
+
+        // New book panel
+        returnBookButton.addActionListener(new ActionListener() {
+
+            @Override
+
+            public void actionPerformed(ActionEvent e) {
+
+                ReturnBook returnBookFrame = new ReturnBook(library);
+
+                returnBookFrame.setVisible(true);
+
+            }
+
+        });
+
+
+        // close the program
+        exitButton.addActionListener(new ActionListener() {
+
+            @Override
+
+            public void actionPerformed(ActionEvent e) {
+
+                JOptionPane.showMessageDialog(null,
+
+                        "Thank you " + librarian.getFirstname() + librarian.getLastname() + " have a nice day. Bye.");
+
+                dispose();
 
             }
 

@@ -39,20 +39,19 @@ public class Library {
     }
 
 
-
-    public void addRent(Book book, User user, Date rentDate, LocalDate returnDate) {
-        if (book.isAvailable()) {
-            book.setAvailable(false);
-            Rent rent = new Rent(book, user, rentDate, returnDate); // Utilisation de `LocalDate`
-            rents.add(rent);
-
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            String formattedReturnDate = returnDate.format(formatter);
-            System.out.println(user.getFirstname() + " " + user.getLastname() + " has borrowed the book: " + book.getTitle() + " and must return it by: " + formattedReturnDate);
-        } else {
-            System.out.println("The book " + book.getTitle() + " is not available.");
-        }
-    }
+//    public void addRent(Book book, User user, Date rentDate, LocalDate returnDate) {
+//        if (book.isAvailable()) {
+//            book.setAvailable(false);
+//            Rent rent = new Rent(book, user, rentDate, returnDate); // Utilisation de `LocalDate`
+//            rents.add(rent);
+//
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//            String formattedReturnDate = returnDate.format(formatter);
+//            System.out.println(user.getFirstname() + " " + user.getLastname() + " has borrowed the book: " + book.getTitle() + " and must return it by: " + formattedReturnDate);
+//        } else {
+//            System.out.println("The book " + book.getTitle() + " is not available.");
+//        }
+//    }
 
     public ArrayList<Book> getBooks() {
         return books;
