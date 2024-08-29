@@ -2,9 +2,12 @@ package fr.pompey.dev.afpa.vue.swing;
 
 import fr.pompey.dev.afpa.controller.LibController;
 import fr.pompey.dev.afpa.entity.Library;
+import fr.pompey.dev.afpa.exceptions.EmailAlreadyExistsException;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 public class AddUser extends JFrame {
     private Library library;
@@ -44,15 +47,22 @@ public class AddUser extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                addNewUser();
+                try {
+                    addNewUser();
+                    JOptionPane.showMessageDialog(null, "User added successfully!");
+                    dispose();
+                } catch (EmailAlreadyExistsException ex) {
+                    // Show an error message dialog with the exception message
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
 
-            private void addNewUser() {
+            private void addNewUser() throws EmailAlreadyExistsException {
 
                 // Recovering field data
-                String firstname = firstnameField.getText();
-                String lastname = lastnameField.getText();
-                String email = emailField.getText();
+                String firstname = firstnameField.getText().trim();
+                String lastname = lastnameField.getText().trim();
+                String email = emailField.getText().trim();
 
                 // using class LibController to add new user to the "Library"
                 // using the same instance of library

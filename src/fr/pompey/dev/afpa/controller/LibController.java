@@ -4,6 +4,8 @@ import fr.pompey.dev.afpa.entity.Book;
 import fr.pompey.dev.afpa.entity.Library;
 import fr.pompey.dev.afpa.entity.Rent;
 import fr.pompey.dev.afpa.entity.User;
+import fr.pompey.dev.afpa.exceptions.EmailAlreadyExistsException;
+
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -12,7 +14,9 @@ public class LibController {
     private final Library library;
 
     public LibController(Library library) {
+
         this.library = library;
+
     }
 
 
@@ -23,9 +27,19 @@ public class LibController {
     }
 
     // add user method
-    public void addUser(String firstname, String lastname, String email) {
-        User user = new User(firstname, lastname, email);
-        library.addUser(user);
+    public void addUser(String firstname, String lastname, String email) throws EmailAlreadyExistsException {
+
+        for (User user : library.getUsers()) {
+
+            if (user.getEmail().equals(email)) {
+
+                throw new EmailAlreadyExistsException("The email " + email + " is already registered.");
+            }
+
+        }
+
+        library.addUser(new User(firstname, lastname, email));
+
     }
 
 

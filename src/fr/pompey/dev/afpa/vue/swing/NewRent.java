@@ -71,9 +71,13 @@ public class NewRent extends JFrame {
 
         // Ajouter l'action du bouton "Rent"
         rentButton.addActionListener(new ActionListener() {
+
             @Override
+
             public void actionPerformed(ActionEvent e) {
+
                 performRent();
+
             }
 
             private void performRent() {
@@ -84,20 +88,29 @@ public class NewRent extends JFrame {
 
                 // Vérifier que le livre et l'utilisateur sont sélectionnés
                 if (selectedBook != null && selectedUser != null) {
+
                     // Convertir Date en LocalDate
                     LocalDate localReturnDate = returnDate.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
+
                     LocalDate localRentDate = LocalDate.now();
+
                     // Utiliser le contrôleur pour ajouter un nouvel emprunt
                     LibController libController = new LibController(library);
+
                     libController.addRent(selectedBook, selectedUser, localRentDate, localReturnDate);
 
                     // Confirmer l'emprunt
                     JOptionPane.showMessageDialog(null,
+
                             "Book '" + selectedBook.getTitle() + "' rented by " + selectedUser.getFirstname() + " " + selectedUser.getLastname() + " with return date: " + localReturnDate);
 
                     // Fermer la fenêtre après l'ajout
+
                     dispose();
+
                 } else {
+
+                    // error messsage to inform the user to select data
                     JOptionPane.showMessageDialog(null, "Please select both a book and a user.");
                 }
             }
