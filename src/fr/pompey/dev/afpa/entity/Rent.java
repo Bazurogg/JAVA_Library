@@ -3,15 +3,14 @@ package fr.pompey.dev.afpa.entity;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Rent {
     public Book book;
     public User user;
-    private final Date rentDate;
+    private final LocalDate rentDate;
     private final LocalDate returnDate;
 
-    public Rent(Book book, User user, Date rentDate, LocalDate returnDate) {
+    public Rent(Book book, User user, LocalDate rentDate, LocalDate returnDate) {
         this.book = book;
         this.user = user;
         this.rentDate = rentDate;
@@ -21,7 +20,7 @@ public class Rent {
     // Getters and setters
 
 
-    public Date getRentDate() {
+    public LocalDate getRentDate() {
         return rentDate;
     }
 
@@ -35,8 +34,8 @@ public class Rent {
         String formattedReturnDate = returnDate.format(formatter);
         return book.getTitle() +
                 "\n" + user.getFirstname() + " " + user.getLastname() + " " + "[" + user.getEmail() + "]" +
-                "\n" + rentDate +
-                "\n" + formattedReturnDate;
+                "\n" + rentDate + " --> " + formattedReturnDate + "\n";
+
     }
 
 }

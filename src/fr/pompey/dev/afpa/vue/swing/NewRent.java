@@ -86,10 +86,10 @@ public class NewRent extends JFrame {
                 if (selectedBook != null && selectedUser != null) {
                     // Convertir Date en LocalDate
                     LocalDate localReturnDate = returnDate.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate();
-
+                    LocalDate localRentDate = LocalDate.now();
                     // Utiliser le contrôleur pour ajouter un nouvel emprunt
                     LibController libController = new LibController(library);
-                    libController.addRent(selectedBook, selectedUser, new Date(), localReturnDate);
+                    libController.addRent(selectedBook, selectedUser, localRentDate, localReturnDate);
 
                     // Confirmer l'emprunt
                     JOptionPane.showMessageDialog(null,

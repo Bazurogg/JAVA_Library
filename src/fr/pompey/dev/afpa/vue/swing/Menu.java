@@ -64,7 +64,6 @@ public class Menu extends JFrame {
         welcomeTextArea.setOpaque(false); // Rendre le texte transparent pour voir l'image en arrière-plan
 
 
-
         // Books list
         mangasListButton.addActionListener(new ActionListener() {
             @Override

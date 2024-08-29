@@ -29,7 +29,7 @@ public class LibController {
     }
 
 
-    public void addRent(Book book, User user, Date rentDate, LocalDate returnDate) {
+    public void addRent(Book book, User user, LocalDate rentDate, LocalDate returnDate) {
         // Créez une nouvelle instance de Rent
         Rent rent = new Rent(book, user, rentDate, returnDate);
 

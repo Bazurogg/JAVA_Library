@@ -1,5 +1,5 @@
 package fr.pompey.dev.afpa.entity;
-
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -9,7 +9,7 @@ public class User extends Person {
 
     private String email;
 
-    private Date registrationDate;
+    private LocalDate registrationDate;
 
     // Constructor
     public User(String firstname, String lastname, String email) {
@@ -22,7 +22,7 @@ public class User extends Person {
 
         setEmail(email);
 
-        this.registrationDate = new Date(); // We use the current day for the "registration date".
+        this.registrationDate = LocalDate.now(); // We use the current day for the "registration date".
 
     }
 
@@ -49,7 +49,7 @@ public class User extends Person {
      *
      * @return the registrationDate
      */
-    public Date getRegistrationDate() {
+    public LocalDate getRegistrationDate() {
         return registrationDate;
     }
 
@@ -58,7 +58,7 @@ public class User extends Person {
      *
      * @param registrationDate the registrationDate
      */
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
 
@@ -68,7 +68,7 @@ public class User extends Person {
     @Override
     public String toString() {
 
-        return getFirstname() + " " + getLastname() + " - " + getEmail() + " -- " + getRegistrationDate();
+        return getFirstname() + " " + getLastname() + " - " + getEmail() + " - [" + getRegistrationDate() + "] " ;
 
     }
 
