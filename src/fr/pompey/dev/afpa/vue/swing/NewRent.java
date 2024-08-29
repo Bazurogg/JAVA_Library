@@ -121,27 +121,4 @@ public class NewRent extends JFrame {
 
     }
 
-
-
-
-//    private class MyActionListener implements ActionListener {
-//
-//        @Override
-//
-//        public void actionPerformed(ActionEvent e) {
-//            Book selectedBook = (Book) bookComboBox.getSelectedItem();
-//            User selectedUser = (User) userComboBox.getSelectedItem();
-//            Date returnDate = (Date) returnDateSpinner.getValue();
-//
-//            // Logique pour effectuer la location ici (ex: update database, etc.)
-//            if (selectedBook != null && selectedUser != null) {
-//                Rent(selectedBook, selectedUser, returnDate);
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Please select both a book and a user.");
-//            }
-//
-//        }
-//
-//    }
-
 }
