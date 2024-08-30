@@ -19,6 +19,8 @@ public class AddUser extends JFrame {
     private JButton cancelButton;
     private JButton addButton;
     private JPanel AddUser;
+    private JList list1;
+    private JScrollBar scrollBar1;
 
     public AddUser(Library library) { // On accepte l'instance de "library" en paramètre
 
@@ -68,9 +70,9 @@ public class AddUser extends JFrame {
             private void addNewUser() throws EmailAlreadyExistsException, InputException, InvalidEmailFormatException {
 
                 // Recovering field data
-                String firstname = firstnameField.getText().trim();
+                String firstname = capitalizeFirstLetter(firstnameField.getText().trim());
 
-                String lastname = lastnameField.getText().trim();
+                String lastname = capitalizeFirstLetter(lastnameField.getText().trim());
 
                 String email = emailField.getText().trim();
 
@@ -85,6 +87,19 @@ public class AddUser extends JFrame {
 
                 // closing the add user panel
                 dispose();
+
+            }
+
+            // Method to capitalize the first letter of input(firstname and lastname)
+            private String capitalizeFirstLetter(String input) {
+
+                if (input == null || input.isEmpty()) {
+
+                    return input;
+
+                }
+
+                return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
 
             }
 
