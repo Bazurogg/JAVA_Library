@@ -3,6 +3,7 @@ package fr.pompey.dev.afpa.vue.swing;
 import fr.pompey.dev.afpa.controller.LibController;
 import fr.pompey.dev.afpa.entity.Library;
 import fr.pompey.dev.afpa.exceptions.EmailAlreadyExistsException;
+import fr.pompey.dev.afpa.exceptions.InputException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -47,30 +48,39 @@ public class AddUser extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 try {
+
                     addNewUser();
-                    JOptionPane.showMessageDialog(null, "User added successfully!");
+
                     dispose();
-                } catch (EmailAlreadyExistsException ex) {
+
+                } catch (EmailAlreadyExistsException | InputException ex) {
+
                     // Show an error message dialog with the exception message
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
                 }
+
             }
 
-            private void addNewUser() throws EmailAlreadyExistsException {
+            private void addNewUser() throws EmailAlreadyExistsException, InputException {
 
                 // Recovering field data
                 String firstname = firstnameField.getText().trim();
+
                 String lastname = lastnameField.getText().trim();
+
                 String email = emailField.getText().trim();
 
                 // using class LibController to add new user to the "Library"
                 // using the same instance of library
                 LibController libController = new LibController(library);
+
                 libController.addUser(firstname, lastname, email);
 
                 // confirm alert
-                JOptionPane.showMessageDialog(null, "User added successfully!");
+                JOptionPane.showMessageDialog(null, "User added successfully! test1");
 
                 // closing the add user panel
                 dispose();

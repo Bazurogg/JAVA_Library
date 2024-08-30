@@ -5,6 +5,7 @@ import fr.pompey.dev.afpa.entity.Library;
 import fr.pompey.dev.afpa.entity.Rent;
 import fr.pompey.dev.afpa.entity.User;
 import fr.pompey.dev.afpa.exceptions.EmailAlreadyExistsException;
+import fr.pompey.dev.afpa.exceptions.InputException;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -22,18 +23,35 @@ public class LibController {
 
     // add book method
     public void addBook(String title, String author, Integer nbPages, boolean available) {
+
         Book book = new Book(title, author, nbPages, available);
+
         library.addBook(book);
+
     }
 
-    // add user method
-    public void addUser(String firstname, String lastname, String email) throws EmailAlreadyExistsException {
+    // add user method with some exception on the inputs
+    public void addUser(String firstname, String lastname, String email) throws EmailAlreadyExistsException, InputException {
 
+        // some throwing exceptions when user is created
         for (User user : library.getUsers()) {
 
+            // did email already exist
             if (user.getEmail().equals(email)) {
 
                 throw new EmailAlreadyExistsException("The email " + email + " is already registered.");
+
+            }
+
+            // did the input is empty
+            if (firstname == null || firstname.trim().isEmpty() ||
+
+                    lastname == null || lastname.trim().isEmpty() ||
+
+                    email == null || email.trim().isEmpty()) {
+
+                throw new InputException("All fields must be filled out.");
+
             }
 
         }
