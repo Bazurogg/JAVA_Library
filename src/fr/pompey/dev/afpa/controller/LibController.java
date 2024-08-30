@@ -6,13 +6,19 @@ import fr.pompey.dev.afpa.entity.Rent;
 import fr.pompey.dev.afpa.entity.User;
 import fr.pompey.dev.afpa.exceptions.EmailAlreadyExistsException;
 import fr.pompey.dev.afpa.exceptions.InputException;
+import fr.pompey.dev.afpa.exceptions.InvalidEmailFormatException;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class LibController {
 
     private final Library library;
+
+    // Regex pattern for email validation
+    private static final String REGEXEMAIL = "^[\\w.-]+@[\\w.-]+\\.[a-z]{2,}$";
 
     public LibController(Library library) {
 
@@ -31,10 +37,18 @@ public class LibController {
     }
 
     // add user method with some exception on the inputs
-    public void addUser(String firstname, String lastname, String email) throws EmailAlreadyExistsException, InputException {
+    public void addUser(String firstname, String lastname, String email) throws EmailAlreadyExistsException,
+            InputException, InvalidEmailFormatException {
 
         // some throwing exceptions when user is created
         for (User user : library.getUsers()) {
+
+            // Validate email format using regex
+            if (!isValidEmail(email)) {
+
+                throw new InvalidEmailFormatException("The email format is invalid: " + email);
+
+            }
 
             // did email already exist
             if (user.getEmail().equals(email)) {
@@ -60,8 +74,20 @@ public class LibController {
 
     }
 
+    // Method to validate the email format using regex
+    private boolean isValidEmail(String email) {
+
+        Pattern pattern = Pattern.compile(REGEXEMAIL);
+
+        Matcher matcher = pattern.matcher(email);
+
+        return matcher.matches();
+
+    }
+
 
     public void addRent(Book book, User user, LocalDate rentDate, LocalDate returnDate) {
+
         // Créez une nouvelle instance de Rent
         Rent rent = new Rent(book, user, rentDate, returnDate);
 
@@ -70,6 +96,7 @@ public class LibController {
 
         // Marquez le livre comme indisponible
         book.setAvailable(false);
+
     }
 
 }

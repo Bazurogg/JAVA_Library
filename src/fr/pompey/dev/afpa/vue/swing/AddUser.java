@@ -4,6 +4,7 @@ import fr.pompey.dev.afpa.controller.LibController;
 import fr.pompey.dev.afpa.entity.Library;
 import fr.pompey.dev.afpa.exceptions.EmailAlreadyExistsException;
 import fr.pompey.dev.afpa.exceptions.InputException;
+import fr.pompey.dev.afpa.exceptions.InvalidEmailFormatException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -55,7 +56,7 @@ public class AddUser extends JFrame {
 
                     dispose();
 
-                } catch (EmailAlreadyExistsException | InputException ex) {
+                } catch (EmailAlreadyExistsException | InputException | InvalidEmailFormatException ex) {
 
                     // Show an error message dialog with the exception message
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -64,7 +65,7 @@ public class AddUser extends JFrame {
 
             }
 
-            private void addNewUser() throws EmailAlreadyExistsException, InputException {
+            private void addNewUser() throws EmailAlreadyExistsException, InputException, InvalidEmailFormatException {
 
                 // Recovering field data
                 String firstname = firstnameField.getText().trim();
